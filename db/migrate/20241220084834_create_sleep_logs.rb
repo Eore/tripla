@@ -4,7 +4,6 @@ class CreateSleepLogs < ActiveRecord::Migration[8.0]
       t.timestamp :clock_in
       t.timestamp :clock_out
       t.references :users, null: false, foreign_key: true
-
     end
   end
 end
