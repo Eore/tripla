@@ -1,0 +1,6 @@
+FROM ruby:3.3.6-alpine
+RUN apk add --update --no-cache build-base tzdata git
+WORKDIR /app
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+CMD ["./bin/rails", "server"]
