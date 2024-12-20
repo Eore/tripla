@@ -12,7 +12,7 @@ class SleepLogsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create sleep_log" do
     assert_difference("SleepLog.count") do
-      post sleep_logs_url, params: { sleep_log: { clock_in: @sleep_log.clock_in, clock_out: @sleep_log.clock_out, users_id: @sleep_log.users_id } }, as: :json
+      post sleep_logs_url, params: { sleep_log: { clock_in: @sleep_log.clock_in, clock_out: @sleep_log.clock_out, user_id: @sleep_log.user_id } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class SleepLogsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update sleep_log" do
-    patch sleep_log_url(@sleep_log), params: { sleep_log: { clock_in: @sleep_log.clock_in, clock_out: @sleep_log.clock_out, users_id: @sleep_log.users_id } }, as: :json
+    patch sleep_log_url(@sleep_log), params: { sleep_log: { clock_in: @sleep_log.clock_in, clock_out: @sleep_log.clock_out, user_id: @sleep_log.user_id } }, as: :json
     assert_response :success
   end
 
