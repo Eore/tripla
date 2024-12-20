@@ -4,9 +4,13 @@ class SleepLog < ApplicationRecord
   validates :clock_in, presence: true
   validate :clock_out, if: -> { clock_out.present? }
 
-  def duration
-    return 0 unless clock_in.present? && clock_out.present?
+  before_save :set_duration
 
-    clock_out - clock_in
+  private
+
+  def set_duration
+    return unless clock_out.present?
+
+    self.duration = clock_out - clock_in
   end
 end
