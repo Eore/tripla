@@ -10,8 +10,6 @@ class FollowersController < ApplicationController
 
   # GET /followers/1
   def show
-    
-
     render json: @follower
   end
 

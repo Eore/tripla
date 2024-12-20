@@ -7,15 +7,18 @@ class SleepLogsController < ApplicationController
 
     if @sleep_log
       @sleep_log.clock_out = Time.now
-    else 
+    else
       @sleep_log = SleepLog.new(user_id: user_id, clock_in: Time.now)
     end
 
-    if @sleep_log.save
-      render json: @sleep_log, status: :created, location: @sleep_log
-    else
+    unless @sleep_log.save
       render json: @sleep_log.errors, status: :unprocessable_entity
+      return
     end
+
+    @sleep_log = SleepLog.where(user_id: user_id).order(clock_in: :asc)
+
+    render json: @sleep_log
   end
 
   # GET /sleep_logs
