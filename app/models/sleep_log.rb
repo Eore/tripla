@@ -1,5 +1,5 @@
 class SleepLog < ApplicationRecord
-  belongs_to :users
+  belongs_to :user
 
   validates :clock_in, presence: true
   validate :clock_out, if: -> { clock_out.present? }
