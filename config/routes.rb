@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :followers
+  resources :follows
   resources :sleep_logs
 
   post "clock/:user_id", to: "sleep_logs#clock"

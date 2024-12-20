@@ -1,5 +1,5 @@
 class SleepLogsController < ApplicationController
-  before_action :set_sleep_log, only: %i[ show update destroy ]
+  before_action :set_sleep_log, only: %i[ update destroy ]
 
   def clock
     user_id = params.expect(:user_id)
@@ -30,6 +30,16 @@ class SleepLogsController < ApplicationController
 
   # GET /sleep_logs/1
   def show
+    user_id = params.expect(:id)
+    follow_ids = User
+      .find_by(id: user_id)
+      .follows.pluck(:follow_id)
+      .push(user_id)
+    @sleep_log = SleepLog
+      .where(user_id: follow_ids)
+      .where.not(duration: nil)
+      .order(duration: :desc)
+
     render json: @sleep_log
   end
 
