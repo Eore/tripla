@@ -2,37 +2,45 @@ require "test_helper"
 
 class SleepLogsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @sleep_log = sleep_logs(:one)
+    @user = users(:miaw)
   end
 
-  test "should get index" do
-    get sleep_logs_url, as: :json
-    assert_response :success
+  test "should properly clock in" do
+    url = "/clock/#{@user.id}"
+    post url, as: :json 
+    new_log = SleepLog.last
+
+    assert_response :ok
+    assert new_log.clock_out.nil?
   end
 
-  test "should create sleep_log" do
-    assert_difference("SleepLog.count") do
-      post sleep_logs_url, params: { sleep_log: { clock_in: @sleep_log.clock_in, clock_out: @sleep_log.clock_out, user_id: @sleep_log.user_id } }, as: :json
+  test "should properly clock out" do
+    url = "/clock/#{@user.id}"
+    post url, as: :json 
+    new_log = SleepLog.last
+
+    assert_response :ok
+    assert new_log.clock_out.nil?
+
+    post url, as: :json 
+
+    new_log = SleepLog.last
+    assert_response :ok
+    assert new_log.clock_out
+    assert new_log.duration
+  end
+
+  test "should return correct sleep logs" do  
+    url = "/sleep_logs/#{@user.id}"
+
+    get url, as: :json
+
+    assert_response :ok
+
+    new_log = JSON.parse(response.body)
+    assert_equal 2, new_log.length
+    new_log.each do |log|
+      assert [users(:miaw).id, users(:nyan).id].include?(log["user_id"])
     end
-
-    assert_response :created
-  end
-
-  test "should show sleep_log" do
-    get sleep_log_url(@sleep_log), as: :json
-    assert_response :success
-  end
-
-  test "should update sleep_log" do
-    patch sleep_log_url(@sleep_log), params: { sleep_log: { clock_in: @sleep_log.clock_in, clock_out: @sleep_log.clock_out, user_id: @sleep_log.user_id } }, as: :json
-    assert_response :success
-  end
-
-  test "should destroy sleep_log" do
-    assert_difference("SleepLog.count", -1) do
-      delete sleep_log_url(@sleep_log), as: :json
-    end
-
-    assert_response :no_content
   end
 end

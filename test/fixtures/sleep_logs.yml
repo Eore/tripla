@@ -1,11 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+miaw_log:
   clock_in: 2024-12-20 13:39:11
-  clock_out: 2024-12-20 13:39:11
-  user: one
+  clock_out: 2024-12-20 13:39:21
+  duration: 10
+  user_id: 1
 
-two:
+nyan_log:
   clock_in: 2024-12-20 13:39:11
-  clock_out: 2024-12-20 13:39:11
-  user: two
+  clock_out: 2024-12-20 13:39:21
+  duration: 10
+  user_id: 2
+
+lala_log:
+  clock_in: 2024-12-20 13:39:11
+  clock_out: 2024-12-20 13:39:21
+  duration: 10
+  user_id: 3
