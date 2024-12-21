@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :follows
-  resources :sleep_logs
-
+  get "follows/:user_id", to: "follows#show"
+  post "follows", to: "follows#create"
+  delete "follows/:id", to: "follows#destroy"
+  get "sleep_logs/:user_id", to: "sleep_logs#show"
   post "clock/:user_id", to: "sleep_logs#clock"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

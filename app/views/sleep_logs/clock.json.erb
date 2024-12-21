@@ -1,8 +1,11 @@
 [
+  <% @sleep_logs.each do |sleep_log| %>
   {
-    "id": "<%= @sleep_log.id %>",
+    "id": <%= @sleep_log.id %>,
     "clock_in": "<%= @sleep_log.clock_in %>",
     "clock_out": "<%= @sleep_log.clock_out %>",
-    
-  }
+    "created_at": "<%= user.created_at.to_s %>",
+    "updated_at": "<%= user.updated_at.to_s %>"
+  },
+  <% end %>
 ]
