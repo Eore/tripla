@@ -1,7 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+miaw:
+  id: 1
+  name: miaw
 
-two:
-  name: MyString
+nyan:
+  id: 2
+  name: nyan
