@@ -25,6 +25,17 @@ podman run -d --rm --name tripla-api -v ./:/app -p 3000:3000 tripla-api
 
 And open `localhost:3000` to test if server running or not. Then you can just start the development without restarting the service.
 
+> [!IMPORTANT]  
+> Make sure that development container is running to procced to the next step, Migration and Adding User
+
+### Migration
+
+For first time run, you need to do the migration first. To do this, you need to execute:
+
+```shell
+podman exec -it tripla-api /app/bin/rails db:migrate
+```
+
 ### Adding user
 
 To add the user, you can use Rails Console. First you need to `exec` to running container using:
