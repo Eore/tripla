@@ -52,9 +52,9 @@ You can't clock in multiple time, you must clock out first then you can clock in
 
 Example response:
 
-```json
-200 OK
+`200 OK`
 
+```json
 [
   {
     "id":1,
@@ -97,9 +97,9 @@ Example request:
 
 Example response:
 
-```json
-200 OK
+`200 OK`
 
+```json
 {
   "id": 1,
   "user_id": 1,
@@ -117,9 +117,9 @@ Show all the user and followed user of the sleep logs, order by duration from lo
 
 Example response:
 
-```json
 200 OK
 
+```json
 [
   {
     "id": 1,
@@ -160,9 +160,7 @@ Unfollow user by follow id.
 
 Example response:
 
-```json
-204 No Content
-```
+`204 No Content`
 
 ### Show followed users
 
@@ -172,9 +170,9 @@ Show all followed user by provided user id.
 
 Example response:
 
-```json
 200 OK
 
+```json
 [
   {
     "id": 1,
