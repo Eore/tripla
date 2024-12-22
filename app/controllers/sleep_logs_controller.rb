@@ -32,6 +32,8 @@ class SleepLogsController < ApplicationController
       .where.not(duration: nil)
       .where("clock_in > ?", Time.now - 1.week)
       .order(duration: :desc)
+      .page(params[:page] || 1)
+      .per(params[:size] || 50)
 
     render json: @sleep_log
   end

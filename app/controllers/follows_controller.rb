@@ -2,7 +2,10 @@ class FollowsController < ApplicationController
   # GET /follows/:user_id
   def show
     user_id = params.expect(:user_id)
-    @follow = Follow.where(user_id: user_id)
+    @follow = Follow
+      .where(user_id: user_id)
+      .page(params[:page] || 1)
+      .per(params[:size] || 50)
 
     render json: @follow
   end
