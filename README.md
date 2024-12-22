@@ -69,17 +69,22 @@ Example response:
 [
   {
     "id":1,
-    "clock_in":"2024-12-20T15:27:52.003Z","clock_out":"2024-12-20T15:28:29.127Z","duration":37.123841,
+    "clock_in":"2024-12-20T15:27:52.003Z",
+    "clock_out":"2024-12-20T15:28:29.127Z",
+    "duration":37.123841,
     "user_id":1
   },
   {
     "id":2,
-    "clock_in":"2024-12-20T15:29:05.992Z","clock_out":"2024-12-20T15:29:07.835Z","duration":1.843107,
+    "clock_in":"2024-12-20T15:29:05.992Z",
+    "clock_out":"2024-12-20T15:29:07.835Z",
+    "duration":1.843107,
     "user_id":1
   },
   {
     "id":7,
-    "clock_in":"2024-12-21T14:48:24.400Z","clock_out":null,
+    "clock_in":"2024-12-21T14:48:24.400Z",
+    "clock_out":null,
     "duration":null,
     "user_id":1
   }
