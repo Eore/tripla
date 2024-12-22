@@ -2,7 +2,10 @@ class SleepLogsController < ApplicationController
   # POST /clock/:user_id
   def clock
     user_id = params.expect(:user_id)
-    @sleep_log = SleepLog.where(user_id: user_id).order(clock_in: :desc).find_by(clock_out: nil)
+    @sleep_log = SleepLog
+      .where(user_id: user_id)
+      .order(clock_in: :desc)
+      .find_by(clock_out: nil)
 
     if @sleep_log
       @sleep_log.clock_out = Time.now
@@ -15,7 +18,10 @@ class SleepLogsController < ApplicationController
       return
     end
 
-    @sleep_log = SleepLog.where(user_id: user_id).order(clock_in: :asc)
+    @sleep_log = SleepLog
+      .where(user_id: user_id)
+      .where("date(clock_in) = ?", Date.current)
+      .order(clock_in: :asc)
 
     render json: @sleep_log
   end
