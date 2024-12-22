@@ -30,7 +30,7 @@ class SleepLogsController < ApplicationController
     @sleep_log = SleepLog
       .where(user_id: follow_ids)
       .where.not(duration: nil)
-      .where('clock_in > ?', Time.now - 1.week)
+      .where("clock_in > ?", Time.now - 1.week)
       .order(duration: :desc)
 
     render json: @sleep_log
