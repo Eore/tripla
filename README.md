@@ -127,9 +127,14 @@ Example response:
 
 ### Show sleep logs
 
-`GET /sleep_logs/:user_id`
+`GET /sleep_logs/:user_id?page=1&size=50`
 
 Show all the user and followed user of the sleep logs, order by duration from longest to shortest.
+
+Queries:
+
+- `page`: Which page will be show in number format
+- `size`: How many data will be show in number format
 
 Example response:
 
@@ -180,9 +185,14 @@ Example response:
 
 ### Show followed users
 
-`GET /follows/:user_id`
+`GET /follows/:user_id?page=1&size=50`
 
 Show all followed user by provided user id.
+
+Queries:
+
+- `page`: Which page will be show in number format
+- `size`: How many data will be show in number format
 
 Example response:
 
