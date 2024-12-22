@@ -128,7 +128,7 @@ Show all the user and followed user of the sleep logs, order by duration from lo
 
 Example response:
 
-200 OK
+`200 OK`
 
 ```json
 [
@@ -181,7 +181,7 @@ Show all followed user by provided user id.
 
 Example response:
 
-200 OK
+`200 OK`
 
 ```json
 [
